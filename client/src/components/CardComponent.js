@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 
 function CardComponent({ events, handlePost, setInputState }) {
+  
   // Thie function transfer date to the format we want
   let dateConverter = (data) => {
     let dateEndIdx = data.indexOf("T");
