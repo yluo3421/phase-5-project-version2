@@ -1,5 +1,10 @@
 # Project Template: React/Rails API
 
+# Run before first time npm start
+cd into client folder
+npm i react-router-dom
+npm i react-calendar
+
 ## Description
 
 This project is scaffolded so that you can build a React frontend and Rails
