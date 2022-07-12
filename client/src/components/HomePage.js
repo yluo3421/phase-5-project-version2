@@ -26,26 +26,6 @@ function HomePage() {
       })
   }, [])
 
-
-  // Thie function transfer date to the format we want
-  let dateConverter = (data) => {
-    let dateEndIdx = data.indexOf("T")
-    let date = data.slice(dateEndIdx-10, dateEndIdx).split('-')
-    let newDateFormat = date.join('/')
-    return (newDateFormat)
-  }
-
-  // Thie function transfer 24hr time format to 12hr time format
-  let timeConverter = (data) => {
-    let timeStartIdx = data.indexOf("T") + 1
-    let hours = data.slice(timeStartIdx, timeStartIdx + 2)
-    let hoursInTwelve = (parseInt(hours) % 12) || 12;
-    let AMOrPM = parseInt(hours) >= 12 ? 'PM' : 'AM';
-    let minutes = data.slice(timeStartIdx + 3, timeStartIdx + 5)
-    let ampmFormat = hoursInTwelve + ":" + minutes + " " + AMOrPM
-    return (ampmFormat)
-  }
-
   const handlePost = ({e, event, inputState }) => {
     fetch('http://localhost:9292/add-event', {
       method: 'POST',
@@ -86,8 +66,6 @@ function HomePage() {
       }
       <CardComponent 
         events = {events} 
-        dateConverter = {dateConverter}
-        timeConverter = {timeConverter}
         handlePost = {handlePost}
         setInputState = {setInputState}
       />
