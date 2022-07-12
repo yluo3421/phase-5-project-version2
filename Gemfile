@@ -49,3 +49,6 @@ group :test do
 end
 
 gem "active_model_serializers", "~> 0.10.12"
+
+# gem 'has_friendship'
+# gem 'amistad', '~> 0.10.2'
