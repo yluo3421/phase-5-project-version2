@@ -1,4 +1,4 @@
-10.times(User.create!(actual_name: Faker::Name.name, username: Faker::App.name, password: Faker::Alphanumeric.alphanumeric(number: 10)))
+10.times{User.create!(actual_name: Faker::Name.name, username: Faker::App.name, password_digest: Faker::IDNumber.invalid)}
 
 # 10.times(Friend.create!(friend_name: Faker::Name.name))
 
@@ -8,7 +8,7 @@ Borough.create!(borough_name: 'Brooklyn')
 Borough.create!(borough_name: 'Queens')
 Borough.create!(borough_name: 'Bronx')
 
-20.times(EventType.create!(event_type_name: Faker::Esport.event))
+20.times{EventType.create!(event_type_name: Faker::Esport.event)}
 
 FavoriteEvent.create!(user_id: 1)
 FavoriteEvent.create!(user_id: 2)
