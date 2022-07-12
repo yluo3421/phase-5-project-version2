@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :favorite_events
+  resources :user_events
+  resources :friends
   resources :users
   resources :event_types
   resources :boroughs

@@ -52,3 +52,4 @@ gem "active_model_serializers", "~> 0.10.12"
 
 # gem 'has_friendship'
 # gem 'amistad', '~> 0.10.2'
+# gem 'friends', '~> 0.55'
