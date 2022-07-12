@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -7,7 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-function Card() {
+function CardComponent({events , dateConverter , timeConverter , handlePost , setInputState}) {
+
   return (
     <Row xs={1} md={2} lg={4} className="justify-content-center">
         {events.map(event => {
@@ -56,7 +57,7 @@ function Card() {
                     </InputGroup>
                   </ListGroup.Item>
 
-                  <Button variant="outline-dark" onClick={(e) => handlePost({e, event, inputState })}>Add To Your Events</Button>
+                  <Button variant="outline-dark" onClick={(e) => handlePost({e, event})}>Add To Your Events</Button>
                 </ListGroup>
 
               </Card>
@@ -67,4 +68,4 @@ function Card() {
   )
 }
 
-export default Card
+export default CardComponent
