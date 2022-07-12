@@ -1,2 +1,0 @@
-class Borough < ApplicationRecord
-end

@@ -51,25 +51,34 @@ function YourEvents() {
       }).then(console.log(newArr))
   }, [editInputState, friendsData])
 
+  // useEffect(() => {
+  //   fetch('http://localhost:9292/your-events')
+  //     .then(resp => resp.json())
+  //     .then(data => setYourEventsData(data))
+
+  //   fetch('http://localhost:9292/boroughs')
+  //     .then(resp => resp.json())
+  //     .then(data => setBoroughsData(data))
+
+  //   fetch('http://localhost:9292/event_types')
+  //     .then(resp => resp.json())
+  //     .then(data => setEventTypesData(data))
+
+  //   fetch('http://localhost:9292/friends')
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       setFriendsData(data)
+  //     })
+  // }, [])
+
+
   useEffect(() => {
-    fetch('http://localhost:9292/your-events')
-      .then(resp => resp.json())
-      .then(data => setYourEventsData(data))
+    fetch('/user_events')
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+  })
 
-    fetch('http://localhost:9292/boroughs')
-      .then(resp => resp.json())
-      .then(data => setBoroughsData(data))
 
-    fetch('http://localhost:9292/event_types')
-      .then(resp => resp.json())
-      .then(data => setEventTypesData(data))
-
-    fetch('http://localhost:9292/friends')
-      .then(resp => resp.json())
-      .then(data => {
-        setFriendsData(data)
-      })
-  }, [])
 
   // Thie function transfer date to the format we want
   let dateConverter = (data) => {
@@ -147,7 +156,7 @@ function YourEvents() {
 
   return (
     <div>
-
+{/* 
       {showDeletedState ?
         <span className='text-center'>
           <Alert variant={"danger"} className="fs-3 sticky-top">Your Event Was Deleted!</Alert>
@@ -224,7 +233,7 @@ function YourEvents() {
           })//yourEventsData.map
         }
 
-      </Row>
+      </Row> */}
     </div>
   )
 }
