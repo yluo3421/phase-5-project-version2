@@ -22,13 +22,14 @@ function SignUpForm({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        actualName: actualName,
+        actual_name: actualName,
         username: username,
         password: password,
         password_confirmation: passwordConfirmation,
         image_url: imageUrl,
       }),
     }).then((r) => {
+        // console.log('im working form handleSubmit')
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => onLogin(user));
@@ -40,7 +41,7 @@ function SignUpForm({ onLogin }) {
 
   return (
     <>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Name</Form.Label>
           <Form.Control
