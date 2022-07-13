@@ -6,7 +6,7 @@ class CreateUserEvents < ActiveRecord::Migration[6.1]
       t.string :event_name
       t.string :start_date_time
       t.string :end_date_time
-      t.string :borough
+      t.string :event_borough
       t.string :event_type
       t.integer :user_id
 

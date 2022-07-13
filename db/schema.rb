@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_07_13_150014) do
     t.string "event_name"
     t.string "start_date_time"
     t.string "end_date_time"
-    t.string "borough"
+    t.string "event_borough"
     t.string "event_type"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
