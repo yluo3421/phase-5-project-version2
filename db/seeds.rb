@@ -1,7 +1,5 @@
 # 10.times{User.create!(actual_name: Faker::Name.name, username: Faker::App.name, password_digest: Faker::IDNumber.invalid)}
 
-
-
 UserEvent.create!(
     event_id: "620401",
     event_name: "Cricket",
