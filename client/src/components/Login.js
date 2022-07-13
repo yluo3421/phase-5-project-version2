@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
 
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
@@ -10,11 +11,13 @@ function Login({ onLogin }) {
 
   return (
     <>
-      <h1 className="fs-1 fst-italic fw-semibold">Play In The Park NYC</h1>
+      <h1 className="fs-1 fst-italic fw-semibold my-5">
+        Play In The Park NYC
+      </h1>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
-          <br/>
+          <br />
           <p>
             Don't have an account? &nbsp;
             <Button color="secondary" onClick={() => setShowLogin(false)}>
@@ -25,7 +28,7 @@ function Login({ onLogin }) {
       ) : (
         <>
           <SignUpForm onLogin={onLogin} />
-          <br/>
+          <br />
           <p>
             Already have an account? &nbsp;
             <Button color="secondary" onClick={() => setShowLogin(true)}>
