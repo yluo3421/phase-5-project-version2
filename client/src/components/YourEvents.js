@@ -1,13 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
 
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Alert from 'react-bootstrap/Alert';
-
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 
@@ -51,31 +43,11 @@ function YourEvents() {
       }).then(console.log(newArr))
   }, [editInputState, friendsData])
 
-  // useEffect(() => {
-  //   fetch('http://localhost:9292/your-events')
-  //     .then(resp => resp.json())
-  //     .then(data => setYourEventsData(data))
-
-  //   fetch('http://localhost:9292/boroughs')
-  //     .then(resp => resp.json())
-  //     .then(data => setBoroughsData(data))
-
-  //   fetch('http://localhost:9292/event_types')
-  //     .then(resp => resp.json())
-  //     .then(data => setEventTypesData(data))
-
-  //   fetch('http://localhost:9292/friends')
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       setFriendsData(data)
-  //     })
-  // }, [])
-
-
   useEffect(() => {
-    fetch('/user_events')
-    .then(resp => resp.json())
-    .then(data => console.log(data))
+    // fetch('/user_events')
+    fetch("/my-events")
+      .then((resp) => resp.json())
+      .then((data) => console.log(data));
   })
 
 

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  get "/my-events", to: "user_events#index"
+  post "/new-event", to: "user_events#create"
+  patch "/update-my-event/:id", to: "user_events#update"
+  delete "/delete-my-event", to: "user_events#destroy"
+
+
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
