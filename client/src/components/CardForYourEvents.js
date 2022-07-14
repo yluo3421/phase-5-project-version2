@@ -79,23 +79,8 @@ function CardForYourEvents({events}) {
                     <span className="mx-2">{event.event_type}</span>
                   </ListGroup.Item>
 
-                  <ListGroup.Item>
-                    <InputGroup className="mb-3">
-                      <textarea
-                        className="form-control"
-                        placeholder="Invite Friends"
-                        aria-label="With textarea"
-                        // onChange={(e) => setInputState(e.target.value)}
-                      ></textarea>
-                    </InputGroup>
-                  </ListGroup.Item>
-
-                  <Button
-                    variant="outline-dark"
-                    // onClick={(e) => handlePost({ e, event })}
-                  >
-                    Add To Your Events
-                  </Button>
+                  
+          
                 </ListGroup>
               </Card>
             </Col>
