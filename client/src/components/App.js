@@ -22,6 +22,8 @@ function App() {
   }, []);
 
   if (!user) return <Login onLogin={setUser} />;
+
+  // console.log(user)
   
 
   return (
@@ -29,7 +31,7 @@ function App() {
       <NavComponent user={user} setUser={setUser} />
       <Switch>
         <Route exact path="/">
-          <HomePage />
+          <HomePage user = {user}/>
         </Route>
         <Route exact path="/personal-events">
           <YourEvents user = {user} />

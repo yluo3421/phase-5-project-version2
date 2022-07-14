@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 
-function CardComponent({ events, handlePost, setInputState }) {
+function CardComponent({ events, handlePost}) {
   
   // Thie function transfer date to the format we want
   let dateConverter = (data) => {
@@ -72,17 +72,6 @@ function CardComponent({ events, handlePost, setInputState }) {
                 <ListGroup.Item>
                   <span className="fw-bold">Event Type:</span>
                   <span className="mx-2">{event.event_type}</span>
-                </ListGroup.Item>
-
-                <ListGroup.Item>
-                  <InputGroup className="mb-3">
-                    <textarea
-                      className="form-control"
-                      placeholder="Invite Friends"
-                      aria-label="With textarea"
-                      onChange={(e) => setInputState(e.target.value)}
-                    ></textarea>
-                  </InputGroup>
                 </ListGroup.Item>
 
                 <Button

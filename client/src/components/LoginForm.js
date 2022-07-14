@@ -20,7 +20,9 @@ function LoginForm({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
-    }).then((r) => {
+    })
+    // .then(resp => resp.json()).then(data => console.log(data))
+    .then((r) => {
       //setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => onLogin(user));

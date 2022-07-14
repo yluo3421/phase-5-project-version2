@@ -10,9 +10,8 @@ import Alert from "react-bootstrap/Alert";
 
 import CardComponent from "./CardComponent";
 
-function HomePage() {
+function HomePage({user}) {
   const [events, setEvents] = useState([]);
-  const [inputState, setInputState] = useState("");
   const [showAddedState, setShowAddedState] = useState(false);
 
   useEffect(() => {
@@ -23,20 +22,26 @@ function HomePage() {
       });
   }, []);
 
-  const handlePost = ({ e, event, inputState }) => {
-    // fetch('http://localhost:9292/add-event', {
+  const handlePost = ({ event }) => {
+    // console.log(event);
+    let postObject = {
+      event_id: event.event_id,
+      event_location: event.event_location,
+      event_name: event.event_name,
+      start_date_time: event.start_date_time,
+      end_date_time: event.end_date_time,
+      event_borough: event.event_borough,
+      event_type: event.event_type,
+      user_id: user.id,
+    };
+    console.log(postObject);
     fetch("/new-event", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        event,
-        inputState,
-      }),
-    })
-      .then(setInputState(""))
-      .then(changeStateTrue());
+      body: JSON.stringify(postObject),
+    }).then(changeStateTrue());
   };
 
   const changeStateTrue = () => {
@@ -64,7 +69,6 @@ function HomePage() {
       <CardComponent
         events={events}
         handlePost={handlePost}
-        setInputState={setInputState}
       />
     </div>
   );
