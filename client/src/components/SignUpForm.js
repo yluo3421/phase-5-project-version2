@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 
 function SignUpForm({ onLogin }) {
   const [actualName, setActualName] = useState("");

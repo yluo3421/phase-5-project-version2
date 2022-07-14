@@ -2,7 +2,6 @@ import React , {useState} from 'react'
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Row from 'react-bootstrap/Row';
 
 function LoginForm({ onLogin }) {
 
@@ -33,7 +32,7 @@ function LoginForm({ onLogin }) {
     }
 
   return (
-    <Form as={Row} onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control
@@ -62,7 +61,7 @@ function LoginForm({ onLogin }) {
         Submit
       </Button>
 
-      {/* I pull this part in only to use the Error but it seems the formatting changes with bootstrap */}
+        {/* I pull this part in only to use the Error but it seems the formatting changes with bootstrap */}
       {/* <Form.Group>
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
