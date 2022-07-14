@@ -29,7 +29,7 @@ function SignUpForm({ onLogin }) {
         image_url: imageUrl,
       }),
     }).then((r) => {
-        // console.log('im working form handleSubmit')
+      // console.log('im working form handleSubmit')
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => onLogin(user));
@@ -39,10 +39,16 @@ function SignUpForm({ onLogin }) {
     });
   }
 
+  //controlId="formBasicName"
+  // controlId = "formBasicUsername";
+  //controlId="formBasicPassword"
+  //controlId="formBasicImage"
+  //controlId="formBasicPasswordConfirmation"
+
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicName">
+        <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="name"
@@ -51,7 +57,7 @@ function SignUpForm({ onLogin }) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicUsername">
+        <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
             type="name"
@@ -60,7 +66,7 @@ function SignUpForm({ onLogin }) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicImage">
+        <Form.Group className="mb-3">
           <Form.Label>Avatar Picture</Form.Label>
           <Form.Control
             type="name"
@@ -69,7 +75,7 @@ function SignUpForm({ onLogin }) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -78,7 +84,7 @@ function SignUpForm({ onLogin }) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPasswordConfirmation">
+        <Form.Group className="mb-3">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="name"
