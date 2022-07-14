@@ -28,10 +28,12 @@ function YourEvents({ user }) {
 
   let deleteEvent = (event) => {
     let id = event.event.id
+    let newArr = [...yourEventsData]
 
     fetch(`/delete-my-event/${id}`, {
       method: "DELETE",
     })
+    .then(setYourEventsData(newArr.filter(item => item.id !== id)))
   }
 
   return (
