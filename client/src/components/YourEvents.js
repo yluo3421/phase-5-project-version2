@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react'
+import CardComponent from './CardComponent'
+
 
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 
-function YourEvents() {
+function YourEvents({user}) {
+
 
   const [yourEventsData, setYourEventsData] = useState([]);
   const [boroughsData, setBoroughsData] = useState([]);
@@ -15,120 +18,123 @@ function YourEvents() {
   const [showDeletedState, setShowDeletedState] = useState(false);
 
 
-  useEffect(() => {
-    let arr = []
-    for (let i = 0; i < yourEventsData.length; i++) {
-      arr.push(false)
-    }
+  // useEffect(() => {
+  //   let arr = []
+  //   for (let i = 0; i < yourEventsData.length; i++) {
+  //     arr.push(false)
+  //   }
 
-    setEditState(arr)
-  }, [yourEventsData])
+  //   setEditState(arr)
+  // }, [yourEventsData])
 
-  let updateFriends = useCallback((id, index) => {
-    let newArr = [...friendsData]
-    fetch(`http://localhost:9292/edit-friends/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        text: editInputState,
-        friend_id: id
-      }),
-    })
-      .then(resp => resp.json())
-      .then(data => {
-        newArr[index] = data
-        setFriendsData(newArr)
-      }).then(console.log(newArr))
-  }, [editInputState, friendsData])
+  // let updateFriends = useCallback((id, index) => {
+  //   let newArr = [...friendsData]
+  //   fetch(`http://localhost:9292/edit-friends/${id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       text: editInputState,
+  //       friend_id: id
+  //     }),
+  //   })
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       newArr[index] = data
+  //       setFriendsData(newArr)
+  //     }).then(console.log(newArr))
+  // }, [editInputState, friendsData])
 
   useEffect(() => {
     // fetch('/user_events')
-    fetch("/my-events")
+    fetch(`/my-events/${user.id}`)
       .then((resp) => resp.json())
-      .then((data) => console.log(data));
-  })
+      .then((data) => setYourEventsData(data));
+  }, [user])
+
+  // console.log(yourEventsData);
 
 
 
   // Thie function transfer date to the format we want
-  let dateConverter = (data) => {
-    let dateEndIdx = data.indexOf("T")
-    let date = data.slice(dateEndIdx-10, dateEndIdx).split('-')
-    let newDateFormat = date.join('/')
-    return (newDateFormat)
-  }
+  // let dateConverter = (data) => {
+  //   let dateEndIdx = data.indexOf("T")
+  //   let date = data.slice(dateEndIdx-10, dateEndIdx).split('-')
+  //   let newDateFormat = date.join('/')
+  //   return (newDateFormat)
+  // }
 
   // Thie function transfer 24hr time format to 12hr time format
-  let timeConverter = (data) => {
-    let timeStartIdx = data.indexOf("T") + 1
-    let hours = data.slice(timeStartIdx, timeStartIdx + 2)
-    let hoursInTwelve = (parseInt(hours) % 12) || 12;
-    let AMOrPM = parseInt(hours) >= 12 ? 'PM' : 'AM';
-    let minutes = data.slice(timeStartIdx + 3, timeStartIdx + 5)
-    let ampmFormat = hoursInTwelve + ":" + minutes + " " + AMOrPM
-    return (ampmFormat)
-  }
+  // let timeConverter = (data) => {
+  //   let timeStartIdx = data.indexOf("T") + 1
+  //   let hours = data.slice(timeStartIdx, timeStartIdx + 2)
+  //   let hoursInTwelve = (parseInt(hours) % 12) || 12;
+  //   let AMOrPM = parseInt(hours) >= 12 ? 'PM' : 'AM';
+  //   let minutes = data.slice(timeStartIdx + 3, timeStartIdx + 5)
+  //   let ampmFormat = hoursInTwelve + ":" + minutes + " " + AMOrPM
+  //   return (ampmFormat)
+  // }
 
 
-  const [dateValue, setDateValue] = useState(new Date()); 
-  const [showAll, setShowAll] = useState(true)
+  // const [dateValue, setDateValue] = useState(new Date()); 
+  // const [showAll, setShowAll] = useState(true)
 
-  function changeDate(e) {
-    
-    setDateValue(e)
-    setShowAll(false)
-  }
+  // function changeDate(e) {
+  //   setDateValue(e)
+  //   setShowAll(false)
+  // }
 
   // the value from calendar is an object rather than a string
   // Have to use JSON.stringify to change it to string
   // Then use dateConverter to make it same format we had in cards
-  function calendarDateToFormat (dateValue) {
-    let dateStr = JSON.stringify(dateValue)
-    let dateStrFormat = dateConverter(dateStr)
-    return dateStrFormat
-  }
+  // function calendarDateToFormat (dateValue) {
+  //   let dateStr = JSON.stringify(dateValue)
+  //   let dateStrFormat = dateConverter(dateStr)
+  //   return dateStrFormat
+  // }
 
-  function showAllEvents () {
-    setShowAll(true)
-  }
+  // function showAllEvents () {
+  //   setShowAll(true)
+  // }
   
-  let displayedData = yourEventsData
-  if (!showAll) {
-    displayedData = yourEventsData.filter(event => dateConverter(event.start_date_time) === calendarDateToFormat (dateValue))
-  }
+  // let displayedData = yourEventsData
+  // if (!showAll) {
+  //   displayedData = yourEventsData.filter(event => dateConverter(event.start_date_time) === calendarDateToFormat (dateValue))
+  // }
 
-  const handleEdit = (e, index ,id) => {
-    let indexInt = parseInt(index)
-    setEditState(editState => editState.map((item, idx) => idx === indexInt ? !item : item))
+  // const handleEdit = (e, index ,id) => {
+  //   let indexInt = parseInt(index)
+  //   setEditState(editState => editState.map((item, idx) => idx === indexInt ? !item : item))
 
-    if (e.target.textContent === 'Done Editing' && editInputState !== '') {
-      updateFriends(id, index)
-    }
-  }
+  //   if (e.target.textContent === 'Done Editing' && editInputState !== '') {
+  //     updateFriends(id, index)
+  //   }
+  // }
 
-  function handleDelete(e, event_id) {
-    let newArr = [...yourEventsData]
-    fetch(`http://localhost:9292/your-events/delete/${event_id}`, {
-      method: 'DELETE',
-    })
-      .then(setYourEventsData(newArr.filter(item => item.id !== event_id)))
-      .then(changeStateTrue())
-  }
+  // function handleDelete(e, event_id) {
+  //   let newArr = [...yourEventsData]
+  //   fetch(`http://localhost:9292/your-events/delete/${event_id}`, {
+  //     method: 'DELETE',
+  //   })
+  //     .then(setYourEventsData(newArr.filter(item => item.id !== event_id)))
+  //     .then(changeStateTrue())
+  // }
 
-  const changeStateTrue = () => {
-    setShowDeletedState(true)
-    setTimeout(changeStateToFalse, 2000)
-  }
+  // const changeStateTrue = () => {
+  //   setShowDeletedState(true)
+  //   setTimeout(changeStateToFalse, 2000)
+  // }
 
-  const changeStateToFalse = () => {
-    setShowDeletedState(false)
-  }
+  // const changeStateToFalse = () => {
+  //   setShowDeletedState(false)
+  // }
 
   return (
-    <div>
-{/* 
+    <>
+      <CardComponent events={yourEventsData} />
+
+      {/* 
       {showDeletedState ?
         <span className='text-center'>
           <Alert variant={"danger"} className="fs-3 sticky-top">Your Event Was Deleted!</Alert>
@@ -206,8 +212,8 @@ function YourEvents() {
         }
 
       </Row> */}
-    </div>
-  )
+    </>
+  );
 }
 
 export default YourEvents

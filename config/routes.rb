@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
 
-  get "/my-events", to: "user_events#index"
+  get "/my-events/:id", to: "user_events#show_events"
+  
   post "/new-event", to: "user_events#create"
   patch "/update-my-event/:id", to: "user_events#update"
   delete "/delete-my-event", to: "user_events#destroy"

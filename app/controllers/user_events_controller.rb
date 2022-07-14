@@ -1,8 +1,14 @@
 class UserEventsController < ApplicationController
     
+    def show_events
+        # byebug
+        events = UserEvent.find_by(user_id: params[:id])
+        render json: events, status: :ok
+    end
+    
+
+
     def index
-        byebug
-        # events = UserEvent.all
     end
 
     def create

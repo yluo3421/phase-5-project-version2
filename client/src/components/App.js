@@ -22,6 +22,7 @@ function App() {
   }, []);
 
   if (!user) return <Login onLogin={setUser} />;
+  
 
   return (
     <div>
@@ -31,7 +32,7 @@ function App() {
           <HomePage />
         </Route>
         <Route exact path="/personal-events">
-          <YourEvents />
+          <YourEvents user = {user} />
         </Route>
       </Switch>
     </div>
