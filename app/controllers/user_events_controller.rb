@@ -29,7 +29,8 @@ class UserEventsController < ApplicationController
     end
 
     def destroy
-        byebug
+        event = UserEvent.find(params[:id])
+        event.destroy
     end
 
 

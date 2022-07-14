@@ -12,7 +12,6 @@ function YourEvents({ user }) {
   const [editState, setEditState] = useState([]);
   const [showDeletedState, setShowDeletedState] = useState(false);
 
-
   useEffect(() => {
     let arr = [];
     for (let i = 0; i < yourEventsData.length; i++) {
@@ -21,11 +20,19 @@ function YourEvents({ user }) {
     setEditState(arr);
   }, [yourEventsData]);
 
-    useEffect(() => {
-      fetch(`/my-events/${user.id}`)
-      .then(resp => resp.json())
-      .then(data => setYourEventsData(data))
-    }, [user])
+  useEffect(() => {
+    fetch(`/my-events/${user.id}`)
+      .then((resp) => resp.json())
+      .then((data) => setYourEventsData(data));
+  }, [user]);
+
+  let deleteEvent = (event) => {
+    let id = event.event.id
+
+    fetch(`/delete-my-event/${id}`, {
+      method: "DELETE",
+    })
+  }
 
   return (
     <>
@@ -36,7 +43,7 @@ function YourEvents({ user }) {
           </Alert>
         </span>
       ) : (
-        <CardForYourEvents events={yourEventsData} />
+        <CardForYourEvents events={yourEventsData} handleDelete ={deleteEvent}/>
       )}
     </>
   );

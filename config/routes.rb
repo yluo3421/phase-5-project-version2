@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   post "/new-event", to: "user_events#create"
   patch "/update-my-event/:id", to: "user_events#update"
-  delete "/delete-my-event", to: "user_events#destroy"
+  delete "/delete-my-event/:id", to: "user_events#destroy"
 
 
   

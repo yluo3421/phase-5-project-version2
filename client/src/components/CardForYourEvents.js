@@ -8,10 +8,8 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Alert from "react-bootstrap/Alert";
 
-function CardForYourEvents({events}) {
-
-    //console.log(events)
-    
+function CardForYourEvents({ events, handleDelete }) {
+  //console.log(events)
 
   // Thie function transfer date to the format we want
   let dateConverter = (data) => {
@@ -79,8 +77,12 @@ function CardForYourEvents({events}) {
                     <span className="mx-2">{event.event_type}</span>
                   </ListGroup.Item>
 
-                  
-          
+                  <Button
+                    variant="outline-dark"
+                    onClick={() => handleDelete({ event })}
+                  >
+                    Delete Event
+                  </Button>
                 </ListGroup>
               </Card>
             </Col>
