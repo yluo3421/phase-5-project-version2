@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        # byebug
         render json: @current_user
     end
 

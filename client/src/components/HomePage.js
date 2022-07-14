@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
 import Alert from "react-bootstrap/Alert";
 
 import CardComponent from "./CardComponent";

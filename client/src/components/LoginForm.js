@@ -5,36 +5,40 @@ import Form from "react-bootstrap/Form";
 import Row from 'react-bootstrap/Row';
 
 function LoginForm({ onLogin }) {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // the <Error> is not supported by bootstrap.
-//   const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
   // if we dont want to show loading we dont need the state and any set state within handleSubmit
-  //const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-    function handleSubmit(e) {
-      e.preventDefault();
-      //setIsLoading(true);
-      fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }).then((r) => {
-        //setIsLoading(false);
-        if (r.ok) {
-          r.json().then((user) => onLogin(user));
-        } else {
-          r.json().then((err) => console.log(err.errors)); //setErrors(err.errors)
-        }
-      });
-    }
+  function handleSubmit(e) {
+    e.preventDefault();
+    // setIsLoading(true);
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
+      // setIsLoading(false);
+      if (r.ok) {
+        // r.json().then((user) => onLogin(user));
+        console.log("i work");
+      } else {
+        console.log("i dont work");
+        // r.json().then((err) => console.log(err.errors)); //setErrors(err.errors)
+      }
+    });
+  }
+
+  // controlId="formBasicUsername"
+  // controlId = "formBasicPassword";
 
   return (
     <Form as={Row} onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicUsername">
+      <Form.Group className="mb-3">
         <Form.Label>Username</Form.Label>
         <Form.Control
           type="name"
@@ -46,7 +50,7 @@ function LoginForm({ onLogin }) {
         />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" >
         <Form.Label>Password</Form.Label>
         <Form.Control
           type="password"
