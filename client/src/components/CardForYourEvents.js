@@ -81,7 +81,7 @@ function CardForYourEvents({ events, handleDelete }) {
                   </ListGroup.Item>
 
 
-                  {event.comments.map(comment=> <CommentComp comment = {comment}/>)}
+                  {event.comments.map(comment=> <CommentComp key={event.user_event_id} comment = {comment}/>)}
 
                   <Button
                     variant="outline-dark"
