@@ -6,6 +6,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 function CommentComp({ comment }) {
   const [commentState , setCommentState] = useState('')
   const [editState, setEditState] = useState(false);
+  const [idk , setIdk] = useState(comment);
   // console.log(comment)
   let handleEdit = (e, comment) => {
     setEditState(!editState);
@@ -25,7 +26,7 @@ function CommentComp({ comment }) {
       })
       .then(resp => resp.json())
     //   .then(data => console.log(data))
-        .then(data => comment = data)
+        .then(data => setIdk(data))
     }
   };
 
@@ -38,7 +39,7 @@ function CommentComp({ comment }) {
               className="form-control"
               placeholder="Invite Friends"
               aria-label="With textarea"
-              onChange={(e)=> setCommentState(e.target.value)}
+              onChange={(e) => setCommentState(e.target.value)}
             >
               {comment.content}
             </textarea>
@@ -46,7 +47,8 @@ function CommentComp({ comment }) {
         </ListGroup.Item>
       ) : (
         <ListGroup.Item>
-          <span>{comment.content}</span>
+          {/* <span>{comment.content}</span> */}
+          <span>{idk.content}</span>
         </ListGroup.Item>
       )}
       <Button variant="outline-dark" onClick={(e) => handleEdit(e, comment)}>
