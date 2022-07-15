@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete "/delete-my-event/:id", to: "user_events#destroy"
 
   patch "/edit-comment/:id", to: "comments#update"
+  post "/create-comment", to: "comments#create"
 
 
   
