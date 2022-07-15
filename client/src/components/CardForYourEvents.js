@@ -97,11 +97,10 @@ function CardForYourEvents({
                     {event.comments.map((comment) => (
                       <>
                         <InputGroup>
-                        {/* {console.log(event.user.username)} */}
-                          <span className="h5">{event.user.username}: {comment.content}
-                          </span>
+                          {/* {event.user.username}: */}
+                          <span className="h5">{comment.content}</span>
                         </InputGroup>
-                        <Button variant="outline-dark">Edit Comment</Button>
+                        <Button variant="outline-dark btn-sm">Edit Comment</Button>
                       </>
                     ))}
                   </ListGroup.Item>
