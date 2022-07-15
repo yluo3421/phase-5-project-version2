@@ -8,12 +8,12 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 // import Alert from "react-bootstrap/Alert";
 
-
 function CardForYourEvents({
   events,
   handleDelete,
   onCommentEdit,
   onCommentState,
+  editState
 }) {
   // console.log(events)
 
@@ -82,28 +82,23 @@ function CardForYourEvents({
                     <span className="fw-bold">Event Type:</span>
                     <span className="mx-2">{event.event_type}</span>
                   </ListGroup.Item>
-
-                  <ListGroup.Item>
-                    <span className="h4">Comments:</span>
-                    {/* <span>{event.comments.map((comment) => console.log(comment))}</span> */}
-                    {/* <textarea
-                        className="form-control"
-                        placeholder="Invite Friends"
-                        aria-label="With textarea"
-                        onChange={(e) => onCommentState(e.target.value)}
-                      >
-                        {event.comments.map(comment => comment)}
-                      </textarea> */}
-                    {event.comments.map((comment) => (
-                      <>
-                        <InputGroup>
-                          {/* {event.user.username}: */}
-                          <span className="h5">{comment.content}</span>
-                        </InputGroup>
-                        <Button variant="outline-dark btn-sm" onClick = {() => handleEdit()}>Edit Comment</Button>
-                      </>
-                    ))}
-                  </ListGroup.Item>
+{console.log(editState)}
+                  {/* { */}
+                    <ListGroup.Item>
+                      <span className="h4">Comments:</span>
+                      {event.comments.map((comment) => (
+                        <>
+                          <InputGroup>
+                            {/* {event.user.username}: */}
+                            <span className="h5">{comment.content}</span>
+                          </InputGroup>
+                          <Button variant="outline-dark btn-sm">
+                            Edit Comment
+                          </Button>
+                        </>
+                      ))}
+                    </ListGroup.Item>
+                  {/* } */}
 
                   <Button
                     variant="outline-dark"

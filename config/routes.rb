@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch "/update-my-event/:id", to: "user_events#update"
   delete "/delete-my-event/:id", to: "user_events#destroy"
 
+  patch "/update-comment", to: "comments#update"
 
   
   # Routing logic: fallback requests for React Router.
