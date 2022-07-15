@@ -18,6 +18,7 @@ function HomePage({user}) {
     fetch("https://data.cityofnewyork.us/resource/tvpp-9vvx.json")
       .then((resp) => resp.json())
       .then((data) => {
+        // setEvents(data);
         setEvents(data.slice(0, 200));
       });
   }, []);

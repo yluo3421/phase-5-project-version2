@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import Alert from "react-bootstrap/Alert";
+// import InputGroup from "react-bootstrap/InputGroup";
+// import Alert from "react-bootstrap/Alert";
+
 
 function CardForYourEvents({ events, handleDelete }) {
-  //console.log(events)
+  // console.log(events)
 
   // Thie function transfer date to the format we want
   let dateConverter = (data) => {
@@ -93,4 +94,4 @@ function CardForYourEvents({ events, handleDelete }) {
   );
 }
 
-export default CardForYourEvents
+export default CardForYourEvents;
