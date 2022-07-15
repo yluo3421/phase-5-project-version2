@@ -100,7 +100,7 @@ function CardForYourEvents({
                           {/* {event.user.username}: */}
                           <span className="h5">{comment.content}</span>
                         </InputGroup>
-                        <Button variant="outline-dark btn-sm">Edit Comment</Button>
+                        <Button variant="outline-dark btn-sm" onClick = {() => handleEdit()}>Edit Comment</Button>
                       </>
                     ))}
                   </ListGroup.Item>
