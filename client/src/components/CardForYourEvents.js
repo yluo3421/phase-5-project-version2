@@ -1,19 +1,23 @@
+
 import React, { useEffect, useState, useCallback } from 'react'
+
 
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import Alert from "react-bootstrap/Alert";
+// import InputGroup from "react-bootstrap/InputGroup";
+// import Alert from "react-bootstrap/Alert";
+
 
 function CardForYourEvents({ events, handleDelete }) {
-  //console.log(events)
+
   const [editInputState, setEditInputState] = useState('');
   const [editState, setEditState] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
   const [toShowComment, setToShowComment] = useState('');
+
 
   // This function transfer date to the format we want
   let dateConverter = (data) => {
@@ -165,4 +169,4 @@ function CardForYourEvents({ events, handleDelete }) {
   );
 }
 
-export default CardForYourEvents
+export default CardForYourEvents;
