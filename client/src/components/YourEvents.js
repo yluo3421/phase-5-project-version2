@@ -27,14 +27,24 @@ function YourEvents({ user }) {
   }, [user]);
 
   let deleteEvent = (event) => {
-    let id = event.event.id
-    let newArr = [...yourEventsData]
+    let id = event.event.id;
+    let newArr = [...yourEventsData];
 
     fetch(`/delete-my-event/${id}`, {
       method: "DELETE",
     })
-    .then(setYourEventsData(newArr.filter(item => item.id !== id)))
-  }
+      .then(setYourEventsData(newArr.filter((item) => item.id !== id)))
+      .then(changeStateTrue());
+  };
+
+  const changeStateTrue = () => {
+    setShowDeletedState(true);
+    setTimeout(changeStateToFalse, 2000);
+  };
+
+  const changeStateToFalse = () => {
+    setShowDeletedState(false);
+  };
 
   return (
     <>
@@ -45,7 +55,7 @@ function YourEvents({ user }) {
           </Alert>
         </span>
       ) : null}
-      
+
       {yourEventsData.length === 0 ? (
         <span className="text-center">
           <Alert variant={"danger"} className="fs-3 sticky-top">
