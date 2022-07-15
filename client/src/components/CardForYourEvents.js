@@ -12,7 +12,7 @@ function CardForYourEvents({ events, handleDelete }) {
   //console.log(events)
   const [editInputState, setEditInputState] = useState('');
   const [editState, setEditState] = useState([]);
-  const [friendsData, setFriendsData] = useState([]);
+  const [commentsData, setCommentsData] = useState([]);
 
   // This function transfer date to the format we want
   let dateConverter = (data) => {
@@ -45,23 +45,23 @@ function CardForYourEvents({ events, handleDelete }) {
 
   // this was for updating friends to backend, trying to change to edit comment
   let updateComments = useCallback((id, index) => {
-    let newArr = [...friendsData]
+    let newArr = [...commentsData]
     fetch(`/update-comment/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        text: editInputState,
+        content: editInputState,
         user_event_id: id
       }),
     })
       .then(resp => resp.json())
       .then(data => {
-        newArr[index] = data
-        setFriendsData(newArr)
-      }).then(console.log(newArr))
-  }, [editInputState, friendsData])
+        console.log(data)
+        setCommentsData(data)
+      })
+  }, [editInputState, commentsData])
 
   const handleEdit = (e, index ,id) => {
     let indexInt = parseInt(index)
@@ -123,14 +123,14 @@ function CardForYourEvents({ events, handleDelete }) {
                     <ListGroup.Item>
                       <InputGroup className="mb-3">
                         <textarea className="form-control" placeholder="Leave Your Comments" aria-label="With textarea" onChange={(e) => setEditInputState(e.target.value)}>
-                          {"Show Existing Comments"}
+                          {event.comments}
                         </textarea>
                       </InputGroup>
                     </ListGroup.Item>
                     :
                     <ListGroup.Item>
                       <span className="fw-bold">Comments:</span>
-                      <span className="mx-2">to show comment</span>
+                      <span className="mx-2">{(commentsData.content)}</span>
                     </ListGroup.Item>
                   }
     
