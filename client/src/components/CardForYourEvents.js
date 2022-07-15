@@ -80,7 +80,8 @@ function CardForYourEvents({ events, handleDelete }) {
                     <span className="mx-2">{event.event_type}</span>
                   </ListGroup.Item>
 
-                  <CommentComp data = {event.comments}/>
+
+                  {event.comments.map(comment=> <CommentComp comment = {comment}/>)}
 
                   <Button
                     variant="outline-dark"
