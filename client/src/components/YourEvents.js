@@ -38,6 +38,14 @@ function YourEvents({ user }) {
 
   return (
     <>
+      {showDeletedState ? (
+        <span className="text-center">
+          <Alert variant={"danger"} className="fs-3 sticky-top">
+            Your Event Was Deleted!
+          </Alert>
+        </span>
+      ) : null}
+      
       {yourEventsData.length === 0 ? (
         <span className="text-center">
           <Alert variant={"danger"} className="fs-3 sticky-top">
@@ -45,7 +53,7 @@ function YourEvents({ user }) {
           </Alert>
         </span>
       ) : (
-        <CardForYourEvents events={yourEventsData} handleDelete ={deleteEvent}/>
+        <CardForYourEvents events={yourEventsData} handleDelete={deleteEvent} />
       )}
     </>
   );
