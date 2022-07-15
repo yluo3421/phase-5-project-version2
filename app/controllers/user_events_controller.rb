@@ -6,7 +6,7 @@ class UserEventsController < ApplicationController
     def show_events
         user = User.find(params[:id])
         if user
-            render json: user.user_events
+            render json: user.user_events, include: ["comments", "user"]
         else
             render json: {message: "User not found"}
         end

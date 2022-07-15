@@ -5,11 +5,16 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-// import InputGroup from "react-bootstrap/InputGroup";
+import InputGroup from "react-bootstrap/InputGroup";
 // import Alert from "react-bootstrap/Alert";
 
 
-function CardForYourEvents({ events, handleDelete }) {
+function CardForYourEvents({
+  events,
+  handleDelete,
+  onCommentEdit,
+  onCommentState,
+}) {
   // console.log(events)
 
   // Thie function transfer date to the format we want
@@ -76,6 +81,29 @@ function CardForYourEvents({ events, handleDelete }) {
                   <ListGroup.Item>
                     <span className="fw-bold">Event Type:</span>
                     <span className="mx-2">{event.event_type}</span>
+                  </ListGroup.Item>
+
+                  <ListGroup.Item>
+                    <span className="h4">Comments:</span>
+                    {/* <span>{event.comments.map((comment) => console.log(comment))}</span> */}
+                    {/* <textarea
+                        className="form-control"
+                        placeholder="Invite Friends"
+                        aria-label="With textarea"
+                        onChange={(e) => onCommentState(e.target.value)}
+                      >
+                        {event.comments.map(comment => comment)}
+                      </textarea> */}
+                    {event.comments.map((comment) => (
+                      <>
+                        <InputGroup>
+                        {/* {console.log(event.user.username)} */}
+                          <span className="h5">{event.user.username}: {comment.content}
+                          </span>
+                        </InputGroup>
+                        <Button variant="outline-dark">Edit Comment</Button>
+                      </>
+                    ))}
                   </ListGroup.Item>
 
                   <Button

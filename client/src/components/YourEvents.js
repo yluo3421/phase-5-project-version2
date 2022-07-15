@@ -9,8 +9,11 @@ import "react-calendar/dist/Calendar.css";
 function YourEvents({ user }) {
   const [yourEventsData, setYourEventsData] = useState([]);
 
-  const [editState, setEditState] = useState([]);
   const [showDeletedState, setShowDeletedState] = useState(false);
+
+  const [editInputState, setEditInputState] = useState("");
+  const [editState, setEditState] = useState([]);
+  const [commentState , setCommentState] = useState("");
 
   useEffect(() => {
     let arr = [];
@@ -46,6 +49,17 @@ function YourEvents({ user }) {
     setShowDeletedState(false);
   };
 
+  let handleCommentEdit = () =>{
+
+  }
+
+  let handleCommentState = () => {
+
+  }
+
+
+
+
   return (
     <>
       {showDeletedState ? (
@@ -63,7 +77,12 @@ function YourEvents({ user }) {
           </Alert>
         </span>
       ) : (
-        <CardForYourEvents events={yourEventsData} handleDelete={deleteEvent} />
+        <CardForYourEvents
+          events={yourEventsData}
+          handleDelete={deleteEvent}
+          onCommentEdit={handleCommentEdit}
+          onCommentState={handleCommentState}
+        />
       )}
     </>
   );
