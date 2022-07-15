@@ -13,6 +13,7 @@ function CardForYourEvents({ events, handleDelete }) {
   const [editInputState, setEditInputState] = useState('');
   const [editState, setEditState] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
+  const [toShowComment, setToShowComment] = useState('');
 
   // This function transfer date to the format we want
   let dateConverter = (data) => {
@@ -45,7 +46,6 @@ function CardForYourEvents({ events, handleDelete }) {
 
   // this was for updating friends to backend, trying to change to edit comment
   let updateComments = useCallback((id, index) => {
-    let newArr = [...commentsData]
     fetch(`/update-comment/${id}`, {
       method: 'PATCH',
       headers: {
@@ -62,6 +62,19 @@ function CardForYourEvents({ events, handleDelete }) {
         setCommentsData(data)
       })
   }, [editInputState, commentsData])
+  console.log(commentsData)
+
+  // fetch all comment from backend to show them
+  useEffect(() => {
+    fetch("/comments")
+      .then((resp) => {
+        resp.json()
+      })
+      .then((data) => {
+        console.log("These are comments from backend" + data)
+        setToShowComment(data);
+      });
+  }, []);
 
   const handleEdit = (e, index ,id) => {
     let indexInt = parseInt(index)
