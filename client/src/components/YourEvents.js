@@ -15,26 +15,10 @@ function YourEvents({ user }) {
   const [editState, setEditState] = useState([]);
   const [commentState, setCommentState] = useState("");
 
-  // useEffect(() => {
-  //   let arr = [];
-  //   for (let i = 0; i < yourEventsData.length; i++) {
-  //     arr.push(false);
-  //   }
-  //   setEditState(arr);
-  // }, [yourEventsData]);
-
   let sum = 0;
   yourEventsData.map((event) => {
     return (sum += event.comments.length);
   });
-
-  // useEffect(() => {
-  //   let arr = [];
-  //   for (let i = 0; i < sum; i++) {
-  //     arr.push(false);
-  //   }
-  //   setEditState(arr);
-  // }, [sum]);
 
   console.log(editState);
 
@@ -92,6 +76,7 @@ function YourEvents({ user }) {
           onCommentEdit={handleCommentEdit}
           onCommentState={handleCommentState}
           editState = {editState}
+          setEditInputState={setEditInputState}
         />
       )}
     </>

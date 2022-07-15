@@ -8,6 +8,9 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 // import Alert from "react-bootstrap/Alert";
 
+import Comment from "./Comment"
+import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
+
 function CardForYourEvents({
   events,
   handleDelete,
@@ -82,24 +85,21 @@ function CardForYourEvents({
                     <span className="fw-bold">Event Type:</span>
                     <span className="mx-2">{event.event_type}</span>
                   </ListGroup.Item>
-{console.log(editState)}
-                  {/* { */}
+                  
+                  {
+                  event.comments.length != 0 ? 
+                  event.comments.map((comment) => 
+                    <Comment 
+                      comment={comment} 
+                      onCommentEdit={onCommentEdit}
+                      onCommentState={onCommentState}
+                      editState={editState}
+                    />) : 
                     <ListGroup.Item>
-                      <span className="h4">Comments:</span>
-                      {event.comments.map((comment) => (
-                        <>
-                          <InputGroup>
-                            {/* {event.user.username}: */}
-                            <span className="h5">{comment.content}</span>
-                          </InputGroup>
-                          <Button variant="outline-dark btn-sm">
-                            Edit Comment
-                          </Button>
-                        </>
-                      ))}
+                      No Comments from User
                     </ListGroup.Item>
-                  {/* } */}
-
+                  }
+                  
                   <Button
                     variant="outline-dark"
                     onClick={() => handleDelete({ event })}
