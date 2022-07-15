@@ -8,6 +8,8 @@ import Button from "react-bootstrap/Button";
 // import InputGroup from "react-bootstrap/InputGroup";
 // import Alert from "react-bootstrap/Alert";
 
+import CommentComp from "./CommentComp";
+
 
 function CardForYourEvents({ events, handleDelete }) {
   // console.log(events)
@@ -77,6 +79,8 @@ function CardForYourEvents({ events, handleDelete }) {
                     <span className="fw-bold">Event Type:</span>
                     <span className="mx-2">{event.event_type}</span>
                   </ListGroup.Item>
+
+                  <CommentComp data = {event.comments}/>
 
                   <Button
                     variant="outline-dark"
