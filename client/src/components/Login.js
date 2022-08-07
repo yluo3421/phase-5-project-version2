@@ -10,7 +10,7 @@ function Login({ onLogin }) {
 
   return (
     <>
-      <h1 className="fs-1 fst-italic fw-semibold">Play In The Park NYC</h1>
+      <h1 className="fs-1 fst-italic fw-semibold">Join Our Website</h1>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />

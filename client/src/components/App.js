@@ -9,6 +9,10 @@ import YourEvents from "./YourEvents";
 import NavComponent from "./NavComponent";
 import Login from "./Login";
 
+import PathFinding from "../AstarVisualizer/PathFinding";
+
+import PathfindingVisualizer from "../PathfindingVisualizer/PathfindingVisualizer";
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -33,9 +37,16 @@ function App() {
         <Route exact path="/">
           <HomePage user = {user}/>
         </Route>
+        <Route exact path="/visualizer">
+          <PathfindingVisualizer user = {user}/>
+        </Route>
         <Route exact path="/personal-events">
           <YourEvents user = {user} />
         </Route>
+        <Route exact path="/pathfinding">
+          <PathFinding user={user} />
+        </Route>
+
       </Switch>
     </div>
   );
