@@ -31,7 +31,7 @@ function NavComponent({user , setUser}) {
           <Nav.Link href="/">Introduction</Nav.Link>
           <Nav.Link href="/visualizer">Dijkstra</Nav.Link>
           <Nav.Link href="/pathfinding">Astar</Nav.Link>
-          <Nav.Link href="/personal-events">Discussion</Nav.Link>
+          <Nav.Link href="/usermessage">Discussion</Nav.Link>
         </Nav>
         <Button onClick={handleLogoutClick} >Logout</Button>
       </Container>

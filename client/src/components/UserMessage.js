@@ -4,36 +4,23 @@ import CardForMessage from "./CardForMessage";
 
 import Alert from "react-bootstrap/Alert";
 
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function UserMessage({ user }) {
-  const [userMessageData, setUserMessageData] = useState([]);
 
-  const [editState, setEditState] = useState([]);
   const [showDeletedState, setShowDeletedState] = useState(false);
 
-  useEffect(() => {
-    let arr = [];
-    for (let i = 0; i < userMessageData.length; i++) {
-      arr.push(false);
-    }
-    setEditState(arr);
-  }, [userMessageData]); 
-
-  useEffect(() => {
-    fetch(`/my-events/${user.id}`)
-      .then((resp) => resp.json())
-      .then((data) => setUserMessageData(data));
-  }, [user]);
-
   let deleteEvent = (event) => {
-    let id = event.event.id;
+    //console.log(event)
+    let id = event.message.id;
     let newArr = [...userMessageData];
 
-    fetch(`/delete-my-event/${id}`, {
+    fetch(`/usermessages/${id}`, {
       method: "DELETE",
     })
-      .then(setYourEventsData(newArr.filter((item) => item.id !== id)))
-      .then(changeStateTrue());
+      .then(setUserMessageData(newArr.filter((item) => item.id !== id)))
+      .then(changeStateTrue)
   };
 
   const changeStateTrue = () => {
@@ -45,12 +32,45 @@ function UserMessage({ user }) {
     setShowDeletedState(false);
   };
 
+  const [userMessageData, setUserMessageData] = useState([])
+  useEffect(() => {
+    fetch("/usermessages")
+      .then((resp) => resp.json())
+      .then((data) => setUserMessageData(data));
+  }, []);
+
+  const [messageToSubmit, setMessageToSubmit] = useState("")
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch("/usermessages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: messageToSubmit,
+        user_id: user.id
+      }),
+    }).then((r) => r.json())
+    .then((data) => {
+      let newData = [...userMessageData, data]
+      setUserMessageData(newData)
+    })
+  }
+  
+  function handleUpdate(updatedMessage) {
+    const updatedMessageArray = userMessageData.map((message) => {
+      return message.id === updatedMessage.id ? updatedMessage : message;
+    });
+    setUserMessageData(updatedMessageArray);
+  }
+
   return (
     <>
       {showDeletedState ? (
         <span className="text-center">
           <Alert variant={"danger"} className="fs-3 sticky-top">
-            Your Event Was Deleted!
+            Your Message Was Deleted!
           </Alert>
         </span>
       ) : null}
@@ -58,13 +78,28 @@ function UserMessage({ user }) {
       {userMessageData.length === 0 ? (
         <span className="text-center">
           <Alert variant={"danger"} className="fs-3 sticky-top">
-            You Have No Events
+            Be the First to Leave a Message
           </Alert>
         </span>
       ) : (
-        <CardForYourEvents events={userMessageData} handleDelete={deleteEvent} />
+        <CardForMessage events={userMessageData} handleDelete={deleteEvent} onUpdateLike={handleUpdate} />
       )}
-      <CardForMessage />
+      
+      <Form onSubmit={handleSubmit} >
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Leave Your Comment</Form.Label>
+          <Form.Control 
+          placeholder="Which do you think is better"
+          value={messageToSubmit}
+          style={{width: "60%"}}
+          onChange={(e) => {setMessageToSubmit(e.target.value)}} 
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit" >
+          Reply
+        </Button>
+        
+      </Form>
     </>
   );
 }
