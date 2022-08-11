@@ -1,3 +1,6 @@
+# Awesome README [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]
+
+
 # Project Template: React/Rails API
 
 # Run before first time npm start
