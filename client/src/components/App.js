@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import HomePage from "./HomePage";
-import YourEvents from "./YourEvents";
+import UserMessage from "./UserMessage"
 import NavComponent from "./NavComponent";
 import Login from "./Login";
 
@@ -40,8 +40,8 @@ function App() {
         <Route exact path="/visualizer">
           <PathfindingVisualizer user = {user}/>
         </Route>
-        <Route exact path="/personal-events">
-          <YourEvents user = {user} />
+        <Route exact path="/usermessage">
+          <UserMessage user = {user} />
         </Route>
         <Route exact path="/pathfinding">
           <PathFinding user={user} />
