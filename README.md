@@ -14,7 +14,7 @@ Snapshot of my website
 [![webpage_pic_004](pictures/Pathfinding%20Algorithm%20Website%20220811-004.png)]
 [![webpage_pic_005](pictures/Pathfinding%20Algorithm%20Website%20220811-005.png)]
 [![webpage_pic_006](pictures/Pathfinding%20Algorithm%20Website%20220811-006.png)]
-[![webpage_pic_007](pictures/Phase%205%20project%20demo%20Path-finding%20Algorithm%20Visualizer%20Shorter%20Version-%2011%20August%202022.gif)]
+
 
 
 
