@@ -15,6 +15,16 @@ Snapshot of my website
 [![webpage_pic_005](pictures/Pathfinding%20Algorithm%20Website%20220811-005.png)]
 [![webpage_pic_006](pictures/Pathfinding%20Algorithm%20Website%20220811-006.png)]
 
+#How to use this at your local VS
+If you want to fork this repo, below are the commands I run:
+Bundle install
+rails s
+# new terminal
+cd client
+npm install
+npm run server
+
+
 
 
 
