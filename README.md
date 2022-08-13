@@ -18,10 +18,10 @@ Snapshot of my website
 #How to use this at your local VS
 
 If you want to fork this repo, below are the commands I run<br />
-Bundle install
-rails s
-create a new terminal
-cd client
-npm install
-npm run server
+Bundle install<br />
+rails s<br />
+create a new terminal<br />
+cd client<br />
+npm install<br />
+npm run server<br />
 
