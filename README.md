@@ -17,7 +17,7 @@ Snapshot of my website
 
 #How to use this at your local VS
 
-If you want to fork this repo, below are the commands I run
+If you want to fork this repo, below are the commands I run<br />
 Bundle install
 rails s
 create a new terminal
