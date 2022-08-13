@@ -7,6 +7,8 @@ Astar Search* (weighted): arguably the best pathfinding algorithm; uses heuristi
 Wall system, inside Dijkstra's page, I enable the custom wall feature that you can use mouse to create wall by your self.
 Random maze, inside Astar page, I enable random maze so you could see how Astar looks for target in a more efficient way.
 [![webpage_gif_001](pictures/Phase%205%20project%20demo%20Path-finding%20Algorithm%20Visualizer%20Shorter%20Version-%2011%20August%202022.gif)]
+
+Snapshot of my website
 [![webpage_pic_001](pictures/Pathfinding%20Algorithm%20Website%20220811-001.png)]
 [![webpage_pic_003](pictures/Pathfinding%20Algorithm%20Website%20220811-003.png)]
 [![webpage_pic_004](pictures/Pathfinding%20Algorithm%20Website%20220811-004.png)]
