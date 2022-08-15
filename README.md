@@ -25,3 +25,7 @@ cd client<br />
 npm install<br />
 npm run server<br />
 
+#Next Step
+Combine two and more algorithms. Utilize dropdown menu for users to choose between them.
+Maze intializer, random maze, clear maze function to be provided.
+Backend error catcher.
