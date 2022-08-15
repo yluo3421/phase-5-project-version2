@@ -17,15 +17,29 @@ Snapshot of my website
 
 #How to use this at your local VS
 
-If you want to fork this repo, below are the commands I run<br />
-Bundle install<br />
-rails s<br />
-create a new terminal<br />
-cd client<br />
-npm install<br />
-npm run server<br />
+To run the website locally  <br />
+You need to fork to your local file. <br />
+To set up the application, run these commands:
 
-#Next Step
+```console
+$ bundle install
+$ bundle exec rake db:migrate db:seed
+```
+
+You can run the app and explore your API in the browser by rails.
+
+```console
+$ rails s
+```
+In a new terminal and run below commands inside directory for frontend. <br />
+```console
+$ cd client
+$ npm install
+$ npm start
+```
+
+
+#Next Goals
 Combine two and more algorithms. Utilize dropdown menu for users to choose between them.
 Maze intializer, random maze, clear maze function to be provided.
 Backend error catcher.
