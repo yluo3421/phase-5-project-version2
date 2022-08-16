@@ -34,6 +34,8 @@ $ rails s
 In a new terminal and run below commands inside directory for frontend. <br />
 ```console
 $ cd client
+```
+```console
 $ npm install
 $ npm start
 ```
